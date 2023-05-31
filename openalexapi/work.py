@@ -17,25 +17,32 @@ from openalexapi.venue import Venue
 from openalexapi.year import Year
 
 
+# Currently missing corresponding_author_ids, corresponding_institution_ids, apc_payment, best_oa_location, grants
 class Work(OpenAlexBaseType):
-    ids: Ids
-    display_name: Optional[str]
+    doi: Optional[str]
     title: Optional[str]
-    publication_year: Optional[conint(le=2023, ge=0)]
+    display_name: Optional[str]
+    publication_year: Optional[int]
     publication_date: Optional[str]
+    ids: Ids
+    language: Optional[str]
+    primary_location: Optional[Venue]
     type: Optional[WorkType]
-    host_venue: Optional[Venue]
     open_access: Optional[OpenAccess]
     authorships: Optional[List[Authorship]]
     cited_by_count: Optional[int]
+    biblio: Optional[Biblio]
     is_retracted: Optional[bool]
     is_paratext: Optional[bool]
     concepts: Optional[List[Concept]]
     mesh: Optional[List[Mesh]]
-    alternate_host_venues: Optional[List[Venue]]
+    location_count: Optional[int]
+    locations: Optional[List[Venue]]
     referenced_works: Optional[List[str]]  # this is urls like https://openalex.org/W123
     related_works: Optional[List[str]]  # this is urls like https://openalex.org/W123
+    ngrams_url: Optional[str]
     abstract_inverted_index: Optional[Dict[str, List[int]]]
-    counts_by_year: Optional[List[Year]]
     cited_by_api_url: Optional[str]
-    biblio: Optional[Biblio]
+    counts_by_year: Optional[List[Year]]
+    updated_date: Optional[str]
+    created_date: Optional[str]
