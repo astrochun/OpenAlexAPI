@@ -52,7 +52,7 @@ class OpenAlex(BaseModel):
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
             return Work(**response.json())
-        elif response.status_code == 404:
+        if response.status_code == 404:
             return None
         else:
             raise ValueError(f"Got {response.status_code} from OpenAlex")
