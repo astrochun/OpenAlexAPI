@@ -93,7 +93,7 @@ class OpenAlex(BaseModel):
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
                 works += [Work(**w) for w in response.json()["results"]]
-            elif response.status_code == 403:
+            if response.status_code == 403:
                 raise ValueError("Got error 403. Are you using OpenAlex IDs?")
             else:
                 raise ValueError(f"Got {response.status_code} from OpenAlex")
