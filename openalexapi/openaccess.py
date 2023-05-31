@@ -10,3 +10,4 @@ class OpenAccess(BaseModel):
     is_oa: bool
     oa_status: Optional[str]
     oa_url: Optional[str]
+    any_repository_has_fulltext: Optional[bool]

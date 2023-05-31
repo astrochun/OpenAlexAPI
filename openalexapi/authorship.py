@@ -13,4 +13,6 @@ class Authorship(BaseModel):
     author_position: str
     author: Optional[Author]
     institutions: Optional[List[Institution]]
+    is_corresponding: Optional[bool]
     raw_affiliation_string: Optional[str]
+    raw_affiliation_strings: Optional[List[str]]
