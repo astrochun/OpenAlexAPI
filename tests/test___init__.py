@@ -34,10 +34,10 @@ class TestOpenAlex(TestCase):
     def test_get_multiple_works(self):
         oa = OpenAlex()
         ids = [
-            "W1492510670", 
-            "https://openalex.org/W2899283552", 
-            "https://openalex.org/W2565233142", 
-            "W3135266120"
+            "W1492510670",
+            "https://openalex.org/W2899283552",
+            "https://openalex.org/W2565233142",
+            "W3135266120",
         ]
         works = oa.get_multiple_works(ids)
         self.assertEqual(len(works), 4)
