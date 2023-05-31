@@ -3,6 +3,7 @@ Copyright 2022 Dennis Priskorn
 """
 from enum import Enum
 
+
 # Pulled from https://api.crossref.org/types
 class WorkType(Enum):
     BOOK = "book"
