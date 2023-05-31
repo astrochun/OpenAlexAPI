@@ -50,14 +50,13 @@ class OpenAlex(BaseModel):
             "User-Agent": f"OpenAlexAPI https://github.com/dpriskorn/OpenAlexAPI mailto:{self.email}",
         }
         response = requests.get(url, headers=headers)
-        if response.status_code == 200:
-            return Work(**response.json())
         if response.status_code == 404:
             return None
         try:
             response.raise_for_status()
         except requests.HTTPError:
             raise ValueError(f"Got {response.status_code} from OpenAlex")
+        return Work(**response.json())
 
     # TODO: Adapt this to support multiple namespaces
     @backoff.on_exception(
@@ -133,7 +132,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
-    def get_cited_by_works(self, work: Work, limit: int = None) -> List[Work]:
+    def get_cited_by_works(self, work: Work, limit: Optional[int] = None) -> List[Work]:
         """Fetches all works that cite the given work, up to some limit.
 
         :parameter work is OpenAlex Work
