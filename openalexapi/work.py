@@ -35,7 +35,7 @@ class Work(OpenAlexBaseType):
     is_retracted: Optional[bool]
     is_paratext: Optional[bool]
     concepts: Optional[List[Concept]]
-    mesh: Optional[List[Mesh]]
+    mesh: Optional[List[Mesh]] = []
     location_count: Optional[int]
     locations: Optional[List[Venue]]
     referenced_works: Optional[List[str]]  # this is urls like https://openalex.org/W123
