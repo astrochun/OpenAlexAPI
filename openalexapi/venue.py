@@ -21,7 +21,7 @@ class Source(OpenAlexBaseType):
 # This was host_venue but change to source
 class Venue(BaseModel):
     is_oa: Optional[bool]
-    landing_page_url: Optional[str]   # Was url in the original metadata schema
+    landing_page_url: Optional[str]  # Was url in the original metadata schema
     pdf_url: Optional[str]  # This was later added
     source: Optional[Source]
     publisher: Optional[str]
