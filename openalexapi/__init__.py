@@ -54,7 +54,9 @@ class OpenAlex(BaseModel):
             return Work(**response.json())
         if response.status_code == 404:
             return None
-        else:
+        try:
+            response.raise_for_status()
+        except requests.HTTPError:
             raise ValueError(f"Got {response.status_code} from OpenAlex")
 
     # TODO: Adapt this to support multiple namespaces
@@ -93,7 +95,9 @@ class OpenAlex(BaseModel):
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
                 works += [Work(**w) for w in response.json()["results"]]
-            if response.raise_for_status():
+            try:
+                response.raise_for_status()
+            except requests.HTTPError:
                 raise ValueError(f"Got error {response.status_code} from OpenAlex")
         return works
 
