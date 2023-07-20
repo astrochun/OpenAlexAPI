@@ -6,6 +6,7 @@ from enum import Enum
 
 # Pulled from https://api.crossref.org/types
 class WorkType(Enum):
+    ARTICLE = "article"
     BOOK = "book"
     BOOK_CHAPTER = "book-chapter"
     BOOK_PART = "book-part"
