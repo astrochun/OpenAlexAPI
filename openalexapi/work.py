@@ -1,6 +1,7 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from typing import Optional, List, Dict
 
 from pydantic import conint

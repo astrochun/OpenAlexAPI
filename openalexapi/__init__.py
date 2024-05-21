@@ -1,6 +1,7 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 import logging
 from typing import Optional, List
 

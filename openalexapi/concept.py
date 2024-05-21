@@ -1,6 +1,7 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from typing import Optional
 
 from openalexapi.basetype import OpenAlexBaseType
