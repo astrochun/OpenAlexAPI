@@ -28,6 +28,7 @@ class Work(OpenAlexBaseType):
     language: Optional[str]
     primary_location: Optional[Venue]
     type: Optional[WorkType]
+    type_crossref: Optional[WorkType]
     open_access: Optional[OpenAccess]
     authorships: Optional[List[Authorship]]
     cited_by_count: Optional[int]

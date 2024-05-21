@@ -31,6 +31,7 @@ class WorkType(Enum):
     PARATEXT = "paratext"
     PEER_REVIEW = "peer-review"
     POSTED_CONTENT = "posted-content"
+    PREPRINT = "preprint"
     PROCEEDINGS = "proceedings"
     PROCEEDINGS_ARTICLE = "proceedings-article"
     PROCEEDINGS_SERIES = "proceedings-series"
