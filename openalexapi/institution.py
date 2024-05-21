@@ -14,5 +14,7 @@ class Institution(OpenAlexBaseType):
     id: Optional[str]
     display_name: Optional[str]
     ror: Optional[str]
-    country_code: Optional[Annotated[str, StringConstraints(max_length=2, min_length=2)]]
+    country_code: Optional[
+        Annotated[str, StringConstraints(max_length=2, min_length=2)]
+    ]
     type: Optional[str]
