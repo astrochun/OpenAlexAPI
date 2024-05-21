@@ -1,9 +1,8 @@
 """
 Copyright 2022 Dennis Priskorn
 """
-from typing import Optional, List, Dict
 
-from pydantic import conint
+from typing import Optional, List, Dict
 
 from openalexapi.basetype import OpenAlexBaseType
 from openalexapi.authorship import Authorship
@@ -19,30 +18,35 @@ from openalexapi.year import Year
 
 # Currently missing corresponding_author_ids, corresponding_institution_ids, apc_payment, best_oa_location, grants
 class Work(OpenAlexBaseType):
-    doi: Optional[str]
-    title: Optional[str]
-    display_name: Optional[str]
-    publication_year: Optional[int]
-    publication_date: Optional[str]
+    doi: Optional[str] = None
+    title: Optional[str] = None
+    display_name: Optional[str] = None
+    publication_year: Optional[int] = None
+    publication_date: Optional[str] = None
     ids: Ids
-    language: Optional[str]
-    primary_location: Optional[Venue]
-    type: Optional[WorkType]
-    open_access: Optional[OpenAccess]
-    authorships: Optional[List[Authorship]]
-    cited_by_count: Optional[int]
-    biblio: Optional[Biblio]
-    is_retracted: Optional[bool]
-    is_paratext: Optional[bool]
-    concepts: Optional[List[Concept]]
+    language: Optional[str] = None
+    primary_location: Optional[Venue] = None
+    type: Optional[WorkType] = None
+    type_crossref: Optional[WorkType] = None
+    open_access: Optional[OpenAccess] = None
+    authorships: Optional[List[Authorship]] = None
+    cited_by_count: Optional[int] = None
+    biblio: Optional[Biblio] = None
+    is_retracted: Optional[bool] = None
+    is_paratext: Optional[bool] = None
+    concepts: Optional[List[Concept]] = None
     mesh: Optional[List[Mesh]] = []
-    location_count: Optional[int]
-    locations: Optional[List[Venue]]
-    referenced_works: Optional[List[str]]  # this is urls like https://openalex.org/W123
-    related_works: Optional[List[str]]  # this is urls like https://openalex.org/W123
-    ngrams_url: Optional[str]
-    abstract_inverted_index: Optional[Dict[str, List[int]]]
-    cited_by_api_url: Optional[str]
-    counts_by_year: Optional[List[Year]]
-    updated_date: Optional[str]
-    created_date: Optional[str]
+    location_count: Optional[int] = None
+    locations: Optional[List[Venue]] = None
+    referenced_works: Optional[List[str]] = (
+        None  # this is urls like https://openalex.org/W123
+    )
+    related_works: Optional[List[str]] = (
+        None  # this is urls like https://openalex.org/W123
+    )
+    ngrams_url: Optional[str] = None
+    abstract_inverted_index: Optional[Dict[str, List[int]]] = None
+    cited_by_api_url: Optional[str] = None
+    counts_by_year: Optional[List[Year]] = None
+    updated_date: Optional[str] = None
+    created_date: Optional[str] = None

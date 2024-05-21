@@ -1,14 +1,15 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from typing import Optional
 
 from openalexapi.basetype import OpenAlexBaseType
 
 
 class Author(OpenAlexBaseType):
-    display_name: Optional[str]
-    orcid: Optional[str]
+    display_name: Optional[str] = None
+    orcid: Optional[str] = None
 
     class Config:
         arbitrary_types_allowed = True

@@ -1,6 +1,7 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from enum import Enum
 
 
@@ -31,6 +32,7 @@ class WorkType(Enum):
     PARATEXT = "paratext"
     PEER_REVIEW = "peer-review"
     POSTED_CONTENT = "posted-content"
+    PREPRINT = "preprint"
     PROCEEDINGS = "proceedings"
     PROCEEDINGS_ARTICLE = "proceedings-article"
     PROCEEDINGS_SERIES = "proceedings-series"
@@ -38,5 +40,7 @@ class WorkType(Enum):
     REFERENCE_ENTRY = "reference-entry"
     REPORT = "report"
     REPORT_SERIES = "report-series"
+    REVIEW = "review"
     STANDARD = "standard"
     STANDARD_SERIES = "standard-series"
+    SUPPLEMENTARY_MATERIALS = "supplementary-materials"

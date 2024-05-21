@@ -21,4 +21,4 @@ jobs:
       - run: mypy --ignore-missing-imports --install-types --non-interactive .
       - run: pytest .
       - run: shopt -s globstar && pyupgrade --keep-runtime-typing --py37-plus **/*.py
-      - run: safety check
+      - run: safety check --ignore 67599

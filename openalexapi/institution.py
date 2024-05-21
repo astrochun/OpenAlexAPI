@@ -1,21 +1,20 @@
 """
 Copyright 2022 Dennis Priskorn
 """
-from typing import Optional
 
-from pydantic import ConstrainedStr
+from typing import Optional
+from typing_extensions import Annotated
+
+from pydantic import StringConstraints
 
 from openalexapi.basetype import OpenAlexBaseType
 
 
-class CountryCode(ConstrainedStr):
-    max_length = 2
-    min_length = 2
-
-
 class Institution(OpenAlexBaseType):
-    id: Optional[str]
-    display_name: Optional[str]
-    ror: Optional[str]
-    country_code: Optional[CountryCode]
-    type: Optional[str]
+    id: Optional[str] = None
+    display_name: Optional[str] = None
+    ror: Optional[str] = None
+    country_code: Optional[
+        Annotated[str, StringConstraints(max_length=2, min_length=2)]
+    ] = None
+    type: Optional[str] = None

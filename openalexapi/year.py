@@ -1,15 +1,13 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from typing import Optional
+from typing_extensions import Annotated
 
-from pydantic import BaseModel, ConstrainedInt
-
-
-class ConstrainedYear(ConstrainedInt):
-    ge = 0
+from pydantic import BaseModel, Field
 
 
 class Year(BaseModel):
-    year: Optional[ConstrainedYear]
+    year: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     cited_by_count: int

@@ -1,15 +1,16 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 from typing import Optional
 
 from pydantic import BaseModel
 
 
 class Ids(BaseModel):
-    doi: Optional[str]
-    pmid: Optional[str]
-    mag: Optional[str]
+    doi: Optional[str] = None
+    pmid: Optional[str] = None
+    mag: Optional[str] = None
 
     class Config:
         arbitrary_types_allowed = True
