@@ -38,8 +38,12 @@ class Work(OpenAlexBaseType):
     mesh: Optional[List[Mesh]] = []
     location_count: Optional[int] = None
     locations: Optional[List[Venue]] = None
-    referenced_works: Optional[List[str]] = None  # this is urls like https://openalex.org/W123
-    related_works: Optional[List[str]] = None  # this is urls like https://openalex.org/W123
+    referenced_works: Optional[List[str]] = (
+        None  # this is urls like https://openalex.org/W123
+    )
+    related_works: Optional[List[str]] = (
+        None  # this is urls like https://openalex.org/W123
+    )
     ngrams_url: Optional[str] = None
     abstract_inverted_index: Optional[Dict[str, List[int]]] = None
     cited_by_api_url: Optional[str] = None
