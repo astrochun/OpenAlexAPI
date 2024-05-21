@@ -11,10 +11,10 @@ from openalexapi.basetype import OpenAlexBaseType
 
 
 class Institution(OpenAlexBaseType):
-    id: Optional[str]
-    display_name: Optional[str]
-    ror: Optional[str]
+    id: Optional[str] = None
+    display_name: Optional[str] = None
+    ror: Optional[str] = None
     country_code: Optional[
         Annotated[str, StringConstraints(max_length=2, min_length=2)]
-    ]
-    type: Optional[str]
+    ] = None
+    type: Optional[str] = None

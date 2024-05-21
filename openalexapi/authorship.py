@@ -12,8 +12,8 @@ from openalexapi.institution import Institution
 
 class Authorship(BaseModel):
     author_position: str
-    author: Optional[Author]
-    institutions: Optional[List[Institution]]
-    is_corresponding: Optional[bool]
-    raw_affiliation_string: Optional[str]
-    raw_affiliation_strings: Optional[List[str]]
+    author: Optional[Author] = None
+    institutions: Optional[List[Institution]] = None
+    is_corresponding: Optional[bool] = None
+    raw_affiliation_string: Optional[str] = None
+    raw_affiliation_strings: Optional[List[str]] = None

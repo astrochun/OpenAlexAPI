@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 
 class OpenAlexBaseType(BaseModel):
-    id: Optional[str]  # this is urls like https://openalex.org/W123
+    id: Optional[str] = None  # this is urls like https://openalex.org/W123
 
     @property
     def id_without_prefix(self):

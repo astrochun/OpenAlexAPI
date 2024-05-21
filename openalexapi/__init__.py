@@ -21,8 +21,8 @@ class OpenAlex(BaseModel):
     :parameter=email
     """
 
-    email: Optional[EmailStr]
-    base_url = "https://api.openalex.org/"
+    email: Optional[EmailStr] = None
+    base_url: str = "https://api.openalex.org/"
 
     @backoff.on_exception(
         backoff.expo,

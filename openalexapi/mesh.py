@@ -15,8 +15,8 @@ class Mesh(BaseModel):
 
     descriptor_ui: Optional[
         Annotated[str, StringConstraints(max_length=10, min_length=7)]
-    ]
+    ] = None
     is_major_topic: bool
     descriptor_name: str
-    qualifier_ui: Optional[str]
-    qualifier_name: Optional[str]
+    qualifier_ui: Optional[str] = None
+    qualifier_name: Optional[str] = None

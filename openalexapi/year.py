@@ -9,5 +9,5 @@ from pydantic import BaseModel, Field
 
 
 class Year(BaseModel):
-    year: Optional[Annotated[int, Field(strict=True, ge=0)]]
+    year: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     cited_by_count: int

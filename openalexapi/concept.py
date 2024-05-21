@@ -8,10 +8,10 @@ from openalexapi.basetype import OpenAlexBaseType
 
 
 class Concept(OpenAlexBaseType):
-    wikidata: Optional[str]
-    display_name: Optional[str]
-    level: Optional[int]
-    score: Optional[float]
+    wikidata: Optional[str] = None
+    display_name: Optional[str] = None
+    level: Optional[int] = None
+    score: Optional[float] = None
 
     class Config:
         arbitrary_types_allowed = True
