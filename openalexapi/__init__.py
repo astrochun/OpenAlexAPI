@@ -91,7 +91,7 @@ class OpenAlex(BaseModel):
         for i in range(0, len(ids), 50):
             url_ids = "|".join(ids[i : i + 50])
             url = self.base_url + f"works?filter=openalex_id:{url_ids}&per_page=50"
-            logger.debug(f"Fetching works {i} through {i+50}")
+            logger.debug(f"Fetching works {i} through {i + 50}")
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
                 works += [Work(**w) for w in response.json()["results"]]
