@@ -4,8 +4,6 @@ Copyright 2022 Dennis Priskorn
 
 from typing import Optional, List, Dict
 
-from pydantic import conint
-
 from openalexapi.basetype import OpenAlexBaseType
 from openalexapi.authorship import Authorship
 from openalexapi.biblio import Biblio
