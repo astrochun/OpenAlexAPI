@@ -40,5 +40,7 @@ class WorkType(Enum):
     REFERENCE_ENTRY = "reference-entry"
     REPORT = "report"
     REPORT_SERIES = "report-series"
+    REVIEW = "review"
     STANDARD = "standard"
     STANDARD_SERIES = "standard-series"
+    SUPPLEMENTARY_MATERIALS = "supplementary-materials"
