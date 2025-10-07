@@ -66,7 +66,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
-    def get_multiple_works(self, ids: List[str]) -> List[Work]:
+    def get_multiple_works(self, ids: List[str] | None) -> List[Work]:
         """Fetches multiple works by OpenAlex IDs. Note this does not support
         alternative namespaces.
 
