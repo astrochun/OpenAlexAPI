@@ -72,8 +72,8 @@ class OpenAlex(BaseModel):
 
         :parameter ids is a list of OpenAlex ID strings
         """
-        if len(ids) == 0:
-            raise ValueError("ids cannot be empty")
+        if not ids:  # len(ids) == 0:
+            raise ValueError("ids cannot be NoneType")
         if self.email is None:
             print(
                 "OpenAlex has 2 pools for clients. "
