@@ -13,9 +13,9 @@ class Source(OpenAlexBaseType):
     issn_l: Optional[str] = None  # What is this?
     issn: Optional[List[str]] = None
     host_organization: Optional[str] = None
-    host_organization_name: Optional[str] = None
-    host_organization_lineage: Optional[List[str]] = None
-    host_organization_lineage_names: Optional[List[str]] = None
+    host_organization_name: Optional[str | None] = None
+    host_organization_lineage: Optional[List[str | None]] = None
+    host_organization_lineage_names: Optional[List[str | None]] = None
     type: Optional[str] = None
 
 
