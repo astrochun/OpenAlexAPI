@@ -154,6 +154,11 @@ class OpenAlex(BaseModel):
         works = []
         cursor = "*"
         while cursor:
+            if not work.cited_by_api_url:
+                oa_id = work.id_without_prefix
+                work.cited_by_api_url = (
+                    f"https://api.openalex.org/works?filter=cites:{oa_id}"
+                )
             url = f"{work.cited_by_api_url}&per_page={per_page}&cursor={cursor}"
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
