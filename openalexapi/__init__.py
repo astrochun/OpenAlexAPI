@@ -30,6 +30,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
+    @backoff.on_predicate(backoff.constant, jitter=None, interval=2)
     def get_single_work(self, id: str) -> Optional[Work]:
         """This models the single work entity endpoint
 
@@ -66,14 +67,15 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
-    def get_multiple_works(self, ids: List[str]) -> List[Work]:
+    @backoff.on_predicate(backoff.constant, jitter=None, interval=5)
+    def get_multiple_works(self, ids: List[str] | None) -> List[Work]:
         """Fetches multiple works by OpenAlex IDs. Note this does not support
         alternative namespaces.
 
         :parameter ids is a list of OpenAlex ID strings
         """
-        if len(ids) == 0:
-            raise ValueError("ids cannot be empty")
+        if not ids:  # len(ids) == 0:
+            raise ValueError("ids cannot be NoneType")
         if self.email is None:
             print(
                 "OpenAlex has 2 pools for clients. "
@@ -107,6 +109,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
+    @backoff.on_predicate(backoff.constant, jitter=None, interval=5)
     def get_related_works(self, work: Work) -> List[Work]:
         """Fetches works related to the given work.
 
@@ -120,6 +123,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
+    @backoff.on_predicate(backoff.constant, jitter=None, interval=5)
     def get_referenced_works(self, work: Work) -> List[Work]:
         """Fetches all works referenced by the given work.
 
@@ -133,6 +137,7 @@ class OpenAlex(BaseModel):
         max_time=60,
         on_backoff=print(f"Backing off"),
     )
+    @backoff.on_predicate(backoff.constant, jitter=None, interval=2)
     def get_cited_by_works(self, work: Work, limit: Optional[int] = None) -> List[Work]:
         """Fetches all works that cite the given work, up to some limit.
 

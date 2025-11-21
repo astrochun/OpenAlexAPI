@@ -12,14 +12,14 @@ from openalexapi import OpenAlex, Work
 
 class TestOpenAlex(TestCase):
     def test_get_single_work(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         work = oa.get_single_work("W2741809807")
         # print(work.dict())
         if not isinstance(work, Work):
             self.fail()
 
     def test_get_single_work_via_doi_namespace(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         work = oa.get_single_work("doi:10.7717/peerj.4375")
         # print(work.dict())
         if not isinstance(work, Work):
@@ -33,7 +33,7 @@ class TestOpenAlex(TestCase):
     #         self.fail()
 
     def test_get_multiple_works(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         ids = [
             "W1492510670",
             "https://openalex.org/W2899283552",
@@ -46,21 +46,21 @@ class TestOpenAlex(TestCase):
             self.assertIsInstance(w, Work)
 
     def test_get_related_works(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         works = oa.get_related_works(oa.get_single_work("W3135266120"))
         # self.assertEqual(len(works), 20)  # This is incorrect 10 vs 20 on 05/31/2023
         for w in works:
             self.assertIsInstance(w, Work)
 
     def test_get_referenced_works(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         works = oa.get_referenced_works(oa.get_single_work("W3135266120"))
         # self.assertEqual(len(works), 29)  # This is incorrect 18 vs 29 on 05/31/2023
         for w in works:
             self.assertIsInstance(w, Work)
 
     def test_get_cited_by_works(self):
-        oa = OpenAlex()
+        oa = OpenAlex(email="pubs-app@pppl.gov")
         works = oa.get_cited_by_works(oa.get_single_work("W2899283552"), limit=500)
         self.assertEqual(len(works), 500)
         for w in works:
