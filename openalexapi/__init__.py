@@ -21,7 +21,7 @@ class OpenAlex(BaseModel):
     :parameter=email
     """
 
-    email: Optional[EmailStr] = None
+    api_key: str
     base_url: str = "https://api.openalex.org/"
 
     @backoff.on_exception(
@@ -37,18 +37,12 @@ class OpenAlex(BaseModel):
         see https://docs.openalex.org/api/get-single-entities#namespace-id-format"""
         if id is None:
             raise ValueError("id was None")
-        if self.email is None:
-            print(
-                "OpenAlex has 2 pools for clients. "
-                "Please be nice and supply your email as the first argument "
-                "when calling this class to get into the polite pool. This way "
-                "OpenAlex can contact you if needed."
-            )
-        url = self.base_url + "works/" + id
+        if self.api_key is None:
+            print("OpenAlex requires an API key.")
+        url = self.base_url + "works/" + id + f"?api_key={self.api_key}"
         logger.debug(f"Fetching {url}")
         headers = {
             "Accept": "application/json",
-            "User-Agent": f"OpenAlexAPI https://github.com/dpriskorn/OpenAlexAPI mailto:{self.email}",
         }
         response = requests.get(url, headers=headers)
         if response.status_code == 404:
@@ -74,23 +68,17 @@ class OpenAlex(BaseModel):
         """
         if len(ids) == 0:
             raise ValueError("ids cannot be empty")
-        if self.email is None:
-            print(
-                "OpenAlex has 2 pools for clients. "
-                "Please be nice and supply your email as the first argument "
-                "when calling this class to get into the polite pool. This way "
-                "OpenAlex can contact you if needed."
-            )
+        if self.api_key is None:
+            print("OpenAlex requires an API Key.")
         headers = {
             "Accept": "application/json",
-            "User-Agent": f"OpenAlexAPI https://github.com/dpriskorn/OpenAlexAPI mailto:{self.email}",
         }
         ids = [s.replace("https://openalex.org/", "") for s in ids]
         works = []
         # Limit of 50 is imposed by OpenAlex API
         for i in range(0, len(ids), 50):
             url_ids = "|".join(ids[i : i + 50])
-            url = self.base_url + f"works?filter=openalex_id:{url_ids}&per_page=50"
+            url = self.base_url + f"works?filter=openalex_id:{url_ids}&per_page=50&api_key={self.api_key}"
             logger.debug(f"Fetching works {i} through {i + 50}")
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
@@ -139,16 +127,10 @@ class OpenAlex(BaseModel):
         :parameter work is OpenAlex Work
         :parameter limit is the maximum number of works to return
         """
-        if self.email is None:
-            print(
-                "OpenAlex has 2 pools for clients. "
-                "Please be nice and supply your email as the first argument "
-                "when calling this class to get into the polite pool. This way "
-                "OpenAlex can contact you if needed."
-            )
+        if self.api_key is None:
+            print("OpenAlex requires an API Key.")
         headers = {
             "Accept": "application/json",
-            "User-Agent": f"OpenAlexAPI https://github.com/dpriskorn/OpenAlexAPI mailto:{self.email}",
         }
         per_page = 200 if limit is None else min(200, limit)
         works = []
@@ -159,7 +141,7 @@ class OpenAlex(BaseModel):
                 work.cited_by_api_url = (
                     f"https://api.openalex.org/works?filter=cites:{oa_id}"
                 )
-            url = f"{work.cited_by_api_url}&per_page={per_page}&cursor={cursor}"
+            url = f"{work.cited_by_api_url}&per_page={per_page}&cursor={cursor}&api_key={self.api_key}"
             response = requests.get(url, headers=headers)
             if response.status_code == 200:
                 works += [Work(**w) for w in response.json()["results"]]
