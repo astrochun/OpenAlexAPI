@@ -1,6 +1,7 @@
 """
 Copyright 2022 Dennis Priskorn
 """
+
 import os
 import unittest
 from unittest import TestCase
