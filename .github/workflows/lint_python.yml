@@ -26,6 +26,9 @@ jobs:
       - run: pip install -e .
       - run: mkdir --parents --verbose .mypy_cache
       - run: mypy --ignore-missing-imports --install-types --non-interactive .
-      - run: pytest .
+      - name: Run pytest
+        env:
+          API_KEY: ${{ secrets.API_KEY}}
+        run: pytest .
       - run: shopt -s globstar && pyupgrade --keep-runtime-typing --py37-plus **/*.py
       - run: safety check --ignore 67599
